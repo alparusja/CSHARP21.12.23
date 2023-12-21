@@ -3,9 +3,10 @@
 
 Console.Write("Enter a number 1: ");
 int b1 = int.Parse(Console.ReadLine()!);
-int count = 0;
+int count = -b1;
 
-while (count != b1) 
-    Console.WriteLine("Yes");
-else
-    Console.WriteLine("No");
+while (count <= b1) 
+{
+    Console.Write(count+ " ");
+    count++;
+}
