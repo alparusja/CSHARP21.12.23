@@ -1,3 +1,12 @@
 ﻿// Задача 1: Напишите программу, которая принимает на вход число 
 // и проверяет, кратно ли оно одновременно 7 и 23.
-Console.WriteLine("Hello, World!");
+Console.WriteLine("Впишите число: ");
+int a = int.Parse(Console.ReadLine()!);
+if (a % 7 == 0 && a % 23 == 0)
+{
+    Console.WriteLine(a + " одновременно кратно 7 и 23");
+}
+else
+{
+    Console.WriteLine(a + " не кратно 7 и 23 одновременно");
+}
