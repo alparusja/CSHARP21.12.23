@@ -1,7 +1,7 @@
 ﻿// 1. Задайте одномерный массив, заполненный случайными
 //    числами. Определите количество простых чисел в этом массиве.
 
-void Print(int[] arr)
+void Print(double[] arr)
 {
     int size = arr.Length;
 
@@ -12,31 +12,47 @@ void Print(int[] arr)
     Console.WriteLine();
 }
 
-int[] MassNums(int size, int from, int to)
+double[] MassNums(int size, int from, int to)
 {
-    int[] arr = new int[size];
+    double[] arr = new double[size];
+    Random n_new = new Random();
 
-    for (int i = 0; i < size; i++)
-        arr[i] = new Random().Next(from, to + 1);
+    for (int i = 1; i < size; i++)
+        arr[i] = n_new.Next(from, to + 1);
     return arr;
 }
 
-int InRange(int[] arr)
-{   
-    int n = 0;
+int CountSimpleNum(double[] arr)
+{
+    int Count = 0;
     for (int i = 0; i < arr.Length; i++)
     {
-        if (arr[i] >= 20 && arr[i] <= 90)        
-            n += 1;          
+        if (FindSimpleNum(arr[i]))
+        {
+            Count++;
+        }
     }
-    return n;    
+    return Count;
 }
 
+bool FindSimpleNum(double N)
+{
+    if (N < 2)
+        return false;
+    for (int i = 2; i < N; i++)
+    {
+        if (N % i == 0)
+            return false;
+    }
+    return true;
+}  
 
 int num = int.Parse(Console.ReadLine()!);
 int start = int.Parse(Console.ReadLine()!);
 int stop = int.Parse(Console.ReadLine()!);
 
-int[] mass = MassNums(num, start, stop);
+double[] mass = MassNums(num, start, stop);
 Print(mass);
-Console.WriteLine(InRange(mass));
+
+int NN = CountSimpleNum(mass);
+Console.WriteLine(NN);
